@@ -1,11 +1,259 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head lang='zh-CN'>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/foundation.min.css' />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div id="global-container">
+      <!-- This element's contents will be replaced with react component. -->
+    </div>
+
+    <script src="/javascripts/react-with-addons.min.js"></script>
+    <script src="/javascripts/react-dom.min.js"></script>
+    <script src="/javascripts/browser.min.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/foundation.min.js"></script>
+    <script src="/javascripts/marked.min.js"></script>
+    <script src="/javascripts/modernizr.js"></script>
+    <script src="/javascripts/posts.js"></script>
+
+    <script type="text/babel">
+      $(document).ready(function() {
+          $(document).foundation();
+      })
+
+      var CSSTransitionGroup = React.addons.CSSTransitionGroup;       //import ReactCSSTransitionGroup
+
+      var WrapUp = React.createClass({
+        render: function() {
+          return (
+            <div>
+              <TopNavbar />
+              <MainContent />
+              <Footer />
+            </div>
+          );
+        }
+      });
+
+      var TopNavbar = React.createClass({
+        render: function() {
+          return (
+            <nav className="top-bar" id="top-navbar">
+              <div className="column row">
+                <div className="top-bar-left">
+                  <ul className="menu">
+                    <li className="menu-text">C4N blog</li>
+                    <li className="active"><a href="#">主页</a></li>
+                    <li><a href="#">关于</a></li>
+                  </ul>
+                </div>
+                <div className="top-bar-right hide-for-small-only">
+                  <ul className="menu">
+                    <li className="menu-text"><small>Powered by React & Foundation</small></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          );
+        }
+      });
+
+      var MainContent = React.createClass({
+        getInitialState: function() {
+          return {
+            currentCategory: "All",
+            categorys: new Array()
+          };
+        },
+        handleChanged: function(value) {
+          this.setState({currentCategory: value});
+        },
+        render: function() {
+          return (
+            <div className="row" id="main-content">
+              <LeftSidebar categorys = {getCategorys()} onChanged = {this.handleChanged}/>
+              <RightContent posts = {getPostsValues()} category = {this.state.currentCategory}/>
+            </div>
+          );
+        }
+      });
+
+      function getCategorys() {
+        return [
+          "Lifestyle",
+          "Workshop",
+          "Other",
+          "All"
+        ]
+      }
+
+      function getPostsValues() {
+        return postsContent;
+      }
+
+      var LeftSidebar = React.createClass({
+        propTypes: {
+          categorys: React.PropTypes.array.isRequired,
+          onChanged: React.PropTypes.func.isRequired
+        },
+        handleChanged: function(value) {
+          this.props.onChanged(value);
+        },
+        render: function() {
+          return (
+            <div id="left-sidebar" className="medium-2 column hide-for-small-only">
+              <SidebarMenu categorys={this.props.categorys} onChanged={this.handleChanged} />
+            </div>
+          );
+        }
+      });
+
+      var SidebarMenu = React.createClass({
+        propTypes: {
+          categorys: React.PropTypes.array.isRequired,
+          onChanged: React.PropTypes.func.isRequired
+        },
+        handleChanged: function(value) {
+          this.props.onChanged(value);
+        },
+        renderMenuItems: function() {
+          var changeHandler = this.handleChanged;
+          return this.props.categorys.map(function(cate, i){
+            return <MenuItem key={"SidebarMenu-" + i} categoryName={cate} onChanged={changeHandler} />
+          });
+        },
+        render: function() {
+          return (
+            <ul className="menu vertical">
+              <li className="menu-text">分类</li>
+              {this.renderMenuItems()}
+            </ul>
+          );
+        }
+      });
+
+      var MenuItem = React.createClass({
+        propTypes: {
+          categoryName: React.PropTypes.string.isRequired,
+          onChanged: React.PropTypes.func.isRequired,
+        },
+        handleClicked: function() {
+          this.props.onChanged(this.props.categoryName);
+        },
+        render: function() {
+          return (
+            <li><a className="menu-item" href="#" onClick={this.handleClicked}>{this.props.categoryName}</a></li>
+          );
+        }
+      });
+
+      var RightContent = React.createClass({
+        propTypes: {
+          posts: React.PropTypes.array.isRequired,
+          category: React.PropTypes.string
+        },
+        getDefaultProps: function() {
+          return {
+            category: "All"
+          }
+        },
+        renderPosts: function() {
+          var category = this.props.category;
+          var postsAmount = 0;
+          var renderedPosts = this.props.posts.map(function(post, i){
+            if(category == "All" || post.blogCategory == category) {
+              postsAmount++;
+              return <BlogPost key={"blogPost-" + i} blogTitle={post.blogTitle} blogCreatedTime={post.blogCreatedTime} blogCategory={post.blogCategory} blogDescription={post.blogDescription} blogBody={post.blogBody}/>
+            }
+          });
+          if(postsAmount == 0) {
+            return <PlaceholderPost />
+          }
+          return renderedPosts;
+        },
+        render: function() {
+          return (
+            <div id="right-content" className="medium-9 medium-offset-1 column">
+              <CSSTransitionGroup transitionName="blogPost" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
+                {this.renderPosts()}
+              </CSSTransitionGroup>
+            </div>
+          );
+        }
+      });
+
+      var PlaceholderPost = React.createClass({
+        render: function() {
+          return (
+            <div className="post-placeholder">
+              <h3>
+                Oops, 当前分类没有对应文章
+              </h3>
+            </div>
+          );
+        }
+      });
+
+      var BlogPost = React.createClass({
+        propTypes: {
+          blogTitle: React.PropTypes.string.isRequired,
+          blogCreatedTime: React.PropTypes.string.isRequired,
+          blogCategory: React.PropTypes.string,
+          blogDescription: React.PropTypes.string.isRequired,
+          blogBody: React.PropTypes.string.isRequired
+        },
+        getDefaultProps: function() {
+          return {
+            blogCategory: "Other"
+          };
+        },
+        rawMarkup: function() {
+          var rawMarkup = marked(this.props.blogBody, {sanitize: true});
+          return {__html: rawMarkup};
+        },
+        render: function() {
+          return (
+            <div className="post-content">
+              <h3>
+                {this.props.blogTitle}
+                <small>
+                  &nbsp;&nbsp;&nbsp;&nbsp;更新于:&nbsp;&nbsp;{this.props.blogCreatedTime}
+                </small>
+              </h3>
+              <h6>
+                分类:&nbsp;&nbsp;{this.props.blogCategory}
+              </h6>
+              <h6>
+                摘要:&nbsp;&nbsp;{this.props.blogDescription}
+                <br /><br />
+              </h6>
+              <div dangerouslySetInnerHTML={this.rawMarkup()} />
+              <hr />
+            </div>
+          );
+        }
+      });
+
+      var Footer = React.createClass({
+        render: function() {
+          return (
+            <footer className='text-center'>
+              <small>Copyright&copy; 2016 C4Nstudio.com . All Rights Reserved. Powered By React & Foundation</small>
+            </footer>
+          );
+        }
+      });
+
+
+      ReactDOM.render(
+        <WrapUp />,
+        document.getElementById("global-container")
+      );
+    </script>
   </body>
 </html>
