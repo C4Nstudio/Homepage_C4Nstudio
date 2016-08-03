@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head lang='zh-CN'>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/foundation.min.css' />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+  </head>
+  <body>
+    <div id="global-container">
+      <!-- This element's contents will be replaced with react component. -->
+    </div>
+
+    <script src="/javascripts/react-with-addons.min.js"></script>
+    <script src="/javascripts/react-dom.min.js"></script>
+    <script src="/javascripts/browser.min.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/foundation.min.js"></script>
+    <script src="/javascripts/marked.min.js"></script>
+    <script src="/javascripts/modernizr.js"></script>
+    <script src="/javascripts/posts.js"></script>
+
+    <script type="text/babel">
+      // $(document).ready(function() {
+      //     $(document).foundation();
+      // })
+
+      var CSSTransitionGroup = React.addons.CSSTransitionGroup;       //import ReactCSSTransitionGroup
+
+      var WrapUp = React.createClass({
+        render: function() {
+          return (
+            <div>
+              <TopNavbar />
+              <ToolBar />
+            </div>
+          );
+        }
+      });
+
+      var TopNavbar = React.createClass({
+        render: function() {
+          return (
+            <nav className="top-bar" id="top-navbar">
+              <div className="column row">
+                <div className="top-bar-left">
+                  <ul className="menu">
+                    <li className="menu-text">C4N blog</li>
+                    <li><a href="/">主页</a></li>
+                    <li className="active"><a href="/about">关于</a></li>
+                  </ul>
+                </div>
+                <div className="top-bar-right hide-for-small-only">
+                  <ul className="menu">
+                    <li className="menu-text"><small>Powered by React & Foundation</small></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          );
+        }
+      });
+
+      var ToolBar = React.createClass({
+        render: function() {
+          return (
+            <div id='tool-bar' className="hide-for-small-only">
+              <a className="button" href="#" title="回到顶部">∧</a>
+            </div>
+          );
+        }
+      });
+
+
+      ReactDOM.render(
+        <WrapUp />,
+        document.getElementById("global-container")
+      );
+    </script>
+  </body>
+</html>
