@@ -3,58 +3,22 @@ var React = require('react');
 var TopNavbar = React.createClass({
   render: function() {
     return (
-      React.createElement(
-        "nav",
-        { className: "top-bar", id: "top-navbar" },
-        React.createElement(
-          "div",
-          { className: "column row" },
-          React.createElement(
-            "div",
-            { className: "top-bar-left" },
-            React.createElement(
-              "ul",
-              { className: "menu" },
-              React.createElement(
-                "li",
-                { className: "menu-text" },
-                "C4N blog"
-              ),
-              React.createElement(
-                "li",
-                { className: "active" },
-                React.createElement(
-                  "a",
-                  { href: "#" },
-                  "主页"
-                )
-              ),
-              React.createElement(
-                "li",
-                null,
-                React.createElement(
-                  "a",
-                  { href: "#" },
-                  "关于"
-                )
-              )
-            )
-          ),
-          React.createElement(
-            "div",
-            { className: "top-bar-right hide-for-small-only" },
-            React.createElement(
-              "ul",
-              { className: "menu" },
-              React.createElement(
-                "li",
-                { className: "menu-text" },
-                "Powered by React & Foundation"
-              )
-            )
-          )
-        )
-      )
+      <nav className="top-bar" id="top-navbar">
+        <div className="column row">
+          <div className="top-bar-left">
+            <ul className="menu">
+              <li className="menu-text">C4N blog</li>
+              <li className="active"><a href="../">主页</a></li>
+              <li><a href="/about">关于</a></li>
+            </ul>
+          </div>
+          <div className="top-bar-right hide-for-small-only">
+            <ul className="menu">
+              <li className="menu-text">Powered by React & Foundation</li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     );
   }
 });
