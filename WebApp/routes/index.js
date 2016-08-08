@@ -4,13 +4,14 @@ var router = express.Router();
 
 var React = require('react');
 var ReactDOMServer = require('react-dom/server');
-var WrapUp = React.createFactory(require('../components/WrapUp'));
+var IndexWrapUp = React.createFactory(require('../components/IndexWrapUp'));
 
 /* GET index page. */
 router.get('/', function(req, res, next) {
-  var componentsHtml = ReactDOMServer.renderToString(WrapUp({}));
+  var componentsHtml = ReactDOMServer.renderToString(IndexWrapUp({}))
+                      + "<script>var pageId = 0;</script>";
 
-  res.render('index', { title: 'C4Nstudio_Home', reactOutput: componentsHtml});
+  res.render('template', { title: 'C4Nstudio_Home', reactOutput: componentsHtml});
 });
 
 module.exports = router;

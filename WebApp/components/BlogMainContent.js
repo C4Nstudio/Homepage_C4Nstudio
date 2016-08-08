@@ -2,7 +2,7 @@ var React = require('react');
 var LeftSidebar = React.createFactory(require('./LeftSidebar'));
 var RightContent = React.createFactory(require('./RightContent'));
 
-var MainContent = React.createClass({
+var BlogMainContent = React.createClass({
   getInitialState: function() {
     return {
       currentCategory: "All",
@@ -49,7 +49,7 @@ var MainContent = React.createClass({
   },
   render: function() {
     return (
-      <div className="row" id="main-content">
+      <div className="row" id="blog-main-content">
         <LeftSidebar categorys = {this.state.categorys} linkDisabled = {this.state.linkDisabled} onChanged = {this.handleChanged}/>
         <RightContent posts = {this.state.posts} category = {this.state.currentCategory}/>
       </div>
@@ -57,4 +57,4 @@ var MainContent = React.createClass({
   }
 });
 
-module.exports = MainContent;
+module.exports = BlogMainContent;

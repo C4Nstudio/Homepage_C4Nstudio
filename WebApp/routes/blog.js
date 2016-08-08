@@ -4,10 +4,12 @@ var router = express.Router();
 
 var React = require('react');
 var ReactDOMServer = require('react-dom/server');
+var BlogWrapUp = React.createFactory(require('../components/BlogWrapUp'));
 
 /* GET index page. */
 router.get('/', function(req, res, next) {
-  var componentsHtml = "<script>var pageId = 2;</script>";
+  var componentsHtml = ReactDOMServer.renderToString(BlogWrapUp({}))
+                      + "<script>var pageId = 1;</script>";
 
   res.render('template', { title: 'C4Nstudio_blog', reactOutput: componentsHtml});
 });

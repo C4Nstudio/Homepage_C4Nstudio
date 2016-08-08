@@ -7,9 +7,10 @@ var TopNavbar = React.createClass({
         <div className="column row">
           <div className="top-bar-left">
             <ul className="menu">
-              <li className="menu-text">C4N blog</li>
-              <li className="active"><a href="../">主页</a></li>
-              <li><a href="/about">关于</a></li>
+              <li className="menu-text">C4Nstudio</li>
+              <li className="active"><a href="../" title="Homepage">主页</a></li>
+              <li><a href="/blog" title="Blog">博客</a></li>
+              <li><a href="/about" title="About">关于</a></li>
             </ul>
           </div>
           <div className="top-bar-right hide-for-small-only">

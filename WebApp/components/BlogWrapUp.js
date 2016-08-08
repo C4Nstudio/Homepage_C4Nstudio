@@ -1,15 +1,15 @@
 var React = require('react');
 var TopNavbar = React.createFactory(require('./TopNavbar'));
-var MainContent = React.createFactory(require('./MainContent'));
+var BlogMainContent = React.createFactory(require('./BlogMainContent'));
 var ToolBar = React.createFactory(require('./ToolBar'));
 var Footer = React.createFactory(require('./Footer'));
 
-var WrapUp = React.createClass({
+var BlogWrapUp = React.createClass({
   render: function() {
     return (
       <div>
         <TopNavbar />
-        <MainContent />
+        <BlogMainContent />
         <ToolBar />
         <Footer />
       </div>
@@ -17,4 +17,4 @@ var WrapUp = React.createClass({
   }
 });
 
-module.exports = WrapUp;
+module.exports = BlogWrapUp;

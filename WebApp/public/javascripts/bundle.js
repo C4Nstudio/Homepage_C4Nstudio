@@ -46,9 +46,14 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(35);
-	var WrapUp = React.createFactory(__webpack_require__(175));
+	var IndexWrapUp = React.createFactory(__webpack_require__(175));
+	var BlogWrapUp = React.createFactory(__webpack_require__(180));
 
-	ReactDOM.render(WrapUp({}), document.getElementById("global-container"));
+	if (window.pageId === 0) {
+	  ReactDOM.render(IndexWrapUp({}), document.getElementById("global-container"));
+	} else if (window.pageId === 1) {
+	  ReactDOM.render(BlogWrapUp({}), document.getElementById("global-container"));
+	}
 
 /***/ },
 /* 1 */
@@ -21435,26 +21440,26 @@
 
 	var React = __webpack_require__(1);
 	var TopNavbar = React.createFactory(__webpack_require__(176));
-	var MainContent = React.createFactory(__webpack_require__(177));
-	var ToolBar = React.createFactory(__webpack_require__(183));
-	var Footer = React.createFactory(__webpack_require__(184));
+	var IndexMainContent = React.createFactory(__webpack_require__(177));
+	var ToolBar = React.createFactory(__webpack_require__(178));
+	var Footer = React.createFactory(__webpack_require__(179));
 
-	var WrapUp = React.createClass({
-	  displayName: 'WrapUp',
+	var IndexWrapUp = React.createClass({
+	  displayName: 'IndexWrapUp',
 
 	  render: function () {
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(TopNavbar, null),
-	      React.createElement(MainContent, null),
+	      React.createElement(IndexMainContent, null),
 	      React.createElement(ToolBar, null),
 	      React.createElement(Footer, null)
 	    );
 	  }
 	});
 
-	module.exports = WrapUp;
+	module.exports = IndexWrapUp;
 
 /***/ },
 /* 176 */
@@ -21481,14 +21486,14 @@
 	            React.createElement(
 	              "li",
 	              { className: "menu-text" },
-	              "C4N blog"
+	              "C4Nstudio"
 	            ),
 	            React.createElement(
 	              "li",
 	              { className: "active" },
 	              React.createElement(
 	                "a",
-	                { href: "../" },
+	                { href: "../", title: "Homepage" },
 	                "主页"
 	              )
 	            ),
@@ -21497,7 +21502,16 @@
 	              null,
 	              React.createElement(
 	                "a",
-	                { href: "/about" },
+	                { href: "/blog", title: "Blog" },
+	                "博客"
+	              )
+	            ),
+	            React.createElement(
+	              "li",
+	              null,
+	              React.createElement(
+	                "a",
+	                { href: "/about", title: "About" },
 	                "关于"
 	              )
 	            )
@@ -21528,11 +21542,287 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var LeftSidebar = React.createFactory(__webpack_require__(178));
-	var RightContent = React.createFactory(__webpack_require__(179));
 
-	var MainContent = React.createClass({
-	  displayName: 'MainContent',
+	var IndexMainContent = React.createClass({
+	  displayName: "IndexMainContent",
+
+	  render: function () {
+	    return React.createElement(
+	      "div",
+	      { id: "index-main-content" },
+	      React.createElement(
+	        "div",
+	        { className: "row", id: "callout" },
+	        React.createElement(
+	          "div",
+	          { className: "medium-12 column" },
+	          React.createElement(
+	            "a",
+	            { href: "#" },
+	            React.createElement("img", { src: "/images/me.jpg", alt: "myPic.jpg" })
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "row column", id: "intro" },
+	        React.createElement(
+	          "div",
+	          { className: "medium-12 column", id: "contacts" },
+	          React.createElement(
+	            "div",
+	            { className: "float-left" },
+	            React.createElement(
+	              "h3",
+	              null,
+	              React.createElement(
+	                "strong",
+	                null,
+	                "Get to know me"
+	              ),
+	              React.createElement(
+	                "small",
+	                null,
+	                " 关注我"
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "float-right" },
+	            React.createElement(
+	              "a",
+	              { href: "javascript:window.open('https://about.me/CanWung')", id: "me-link" },
+	              React.createElement("img", { src: "/images/me.png", alt: "me" })
+	            ),
+	            React.createElement(
+	              "a",
+	              { href: "javascript:window.open('https://github.com/C4Nstudio')", id: "github-link" },
+	              React.createElement("img", { src: "/images/octocat.png", alt: "github" })
+	            ),
+	            React.createElement(
+	              "a",
+	              { href: "javascript:window.open('https://www.facebook.com/can.wung')", id: "facebook-link" },
+	              React.createElement("img", { src: "/images/facebook.png", alt: "facebook" })
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "row column", id: "introductions" },
+	          React.createElement(
+	            "div",
+	            { className: "medium-4 column" },
+	            React.createElement(
+	              "div",
+	              { className: "introduction-tag" },
+	              React.createElement("img", { src: "/images/wordMosaic.png", className: "introduction-img", alt: "wordMosaic.png" }),
+	              React.createElement(
+	                "div",
+	                { className: "introduction-text" },
+	                React.createElement(
+	                  "h3",
+	                  null,
+	                  React.createElement(
+	                    "small",
+	                    null,
+	                    "我是"
+	                  ),
+	                  "学生"
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "华南农业大学2013级软件工程专业"
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "曾担任学院团委副书记"
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "曾获校二等奖学金及三号学生称号"
+	                )
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "medium-4 column" },
+	            React.createElement(
+	              "div",
+	              { className: "introduction-tag" },
+	              React.createElement("img", { src: "/images/chupin.png", className: "introduction-img", alt: "chupin.png" }),
+	              React.createElement(
+	                "div",
+	                { className: "introduction-text" },
+	                React.createElement(
+	                  "h3",
+	                  null,
+	                  React.createElement(
+	                    "small",
+	                    null,
+	                    "我爱"
+	                  ),
+	                  "前端开发"
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "曾负责点解App主页等网站前端开发"
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "喜欢浏览学习Alloyteam等前端博客"
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "希望成为一名终身学习的前端开发工程师"
+	                )
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "medium-4 column" },
+	            React.createElement(
+	              "div",
+	              { className: "introduction-tag" },
+	              React.createElement("img", { src: "/images/videoClip.png", className: "introduction-img", alt: "videoClip.png" }),
+	              React.createElement(
+	                "div",
+	                { className: "introduction-text" },
+	                React.createElement(
+	                  "h3",
+	                  null,
+	                  React.createElement(
+	                    "small",
+	                    null,
+	                    "我爱"
+	                  ),
+	                  "视频制作"
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "曾主导校运会预告片、开幕式视频后期制作"
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "曾自编自导自演学院迎新视频"
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "喜欢鼓捣PS、AE、PR修图做特效"
+	                )
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = IndexMainContent;
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+
+	var ToolBar = React.createClass({
+	  displayName: 'ToolBar',
+
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      { id: 'tool-bar', className: 'hide-for-small-only' },
+	      React.createElement(
+	        'a',
+	        { className: 'button', href: '#', title: '回到顶部' },
+	        '∧'
+	      )
+	    );
+	  }
+	});
+
+	module.exports = ToolBar;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+
+	var Footer = React.createClass({
+	  displayName: 'Footer',
+
+	  render: function () {
+	    return React.createElement(
+	      'footer',
+	      { id: 'footer', className: 'text-center' },
+	      React.createElement(
+	        'small',
+	        null,
+	        'Copyright © ',
+	        React.createElement(
+	          'a',
+	          { href: '#' },
+	          'C4Nstudio.com'
+	        ),
+	        ' . All Rights Reserved. Powered By React & Foundation'
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Footer;
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var TopNavbar = React.createFactory(__webpack_require__(176));
+	var BlogMainContent = React.createFactory(__webpack_require__(181));
+	var ToolBar = React.createFactory(__webpack_require__(178));
+	var Footer = React.createFactory(__webpack_require__(179));
+
+	var BlogWrapUp = React.createClass({
+	  displayName: 'BlogWrapUp',
+
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(TopNavbar, null),
+	      React.createElement(BlogMainContent, null),
+	      React.createElement(ToolBar, null),
+	      React.createElement(Footer, null)
+	    );
+	  }
+	});
+
+	module.exports = BlogWrapUp;
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var LeftSidebar = React.createFactory(__webpack_require__(182));
+	var RightContent = React.createFactory(__webpack_require__(183));
+
+	var BlogMainContent = React.createClass({
+	  displayName: 'BlogMainContent',
 
 	  getInitialState: function () {
 	    return {
@@ -21565,17 +21855,17 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      { className: 'row', id: 'main-content' },
+	      { className: 'row', id: 'blog-main-content' },
 	      React.createElement(LeftSidebar, { categorys: this.state.categorys, linkDisabled: this.state.linkDisabled, onChanged: this.handleChanged }),
 	      React.createElement(RightContent, { posts: this.state.posts, category: this.state.currentCategory })
 	    );
 	  }
 	});
 
-	module.exports = MainContent;
+	module.exports = BlogMainContent;
 
 /***/ },
-/* 178 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -21659,12 +21949,12 @@
 	module.exports = LeftSidebar;
 
 /***/ },
-/* 179 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var BlogPost = React.createFactory(__webpack_require__(180));
-	var PlaceholderPost = React.createFactory(__webpack_require__(182));
+	var BlogPost = React.createFactory(__webpack_require__(184));
+	var PlaceholderPost = React.createFactory(__webpack_require__(186));
 
 	var RightContent = React.createClass({
 	  displayName: 'RightContent',
@@ -21704,11 +21994,11 @@
 	module.exports = RightContent;
 
 /***/ },
-/* 180 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var marked = __webpack_require__(181);
+	var marked = __webpack_require__(185);
 
 	var BlogPost = React.createClass({
 	  displayName: 'BlogPost',
@@ -21767,7 +22057,7 @@
 	module.exports = BlogPost;
 
 /***/ },
-/* 181 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -22146,7 +22436,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 182 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -22168,60 +22458,6 @@
 	});
 
 	module.exports = PlaceholderPost;
-
-/***/ },
-/* 183 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-
-	var ToolBar = React.createClass({
-	  displayName: 'ToolBar',
-
-	  render: function () {
-	    return React.createElement(
-	      'div',
-	      { id: 'tool-bar', className: 'hide-for-small-only' },
-	      React.createElement(
-	        'a',
-	        { className: 'button', href: '#', title: '回到顶部' },
-	        '∧'
-	      )
-	    );
-	  }
-	});
-
-	module.exports = ToolBar;
-
-/***/ },
-/* 184 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-
-	var Footer = React.createClass({
-	  displayName: 'Footer',
-
-	  render: function () {
-	    return React.createElement(
-	      'footer',
-	      { id: 'footer', className: 'text-center' },
-	      React.createElement(
-	        'small',
-	        null,
-	        'Copyright © ',
-	        React.createElement(
-	          'a',
-	          { href: '#' },
-	          'C4Nstudio.com'
-	        ),
-	        ' . All Rights Reserved. Powered By React & Foundation'
-	      )
-	    );
-	  }
-	});
-
-	module.exports = Footer;
 
 /***/ }
 /******/ ]);
