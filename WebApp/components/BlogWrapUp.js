@@ -11,11 +11,11 @@ var BlogWrapUp = React.createClass({
   render: function() {
     return (
       <div>
-        <TopNavbar />
+        <TopNavbar pageId = "1" />
         <BlogMainContent categorys={this.props.categorys} posts={this.props.posts}/>
         <ToolBar />
         <Footer />
-        {script({children: this.props.pageId})}
+        {script({children: "var pageId = 1;"})}
       </div>
     );
   }

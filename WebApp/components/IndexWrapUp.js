@@ -11,11 +11,11 @@ var IndexWrapUp = React.createClass({
   render: function() {
     return (
       <div>
-        <TopNavbar />
+        <TopNavbar pageId = "0" />
         <IndexMainContent />
         <ToolBar />
         <Footer />
-        {script({children: this.props.pageId})}
+        {script({children: "var pageId = 0;"})}
       </div>
     );
   }

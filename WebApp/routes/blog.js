@@ -12,7 +12,7 @@ var Posts = require("../public/javascripts/posts");
 router.get('/', function(req, res, next) {
   var data = new Posts();
   var props = {
-    pageId: 1,
+    pageId: "1",
     categorys: data.getCategorys(),
     posts: data.getPosts()
   }

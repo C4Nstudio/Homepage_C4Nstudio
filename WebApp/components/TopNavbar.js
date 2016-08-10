@@ -8,19 +8,29 @@ var TopNavbar = React.createClass({
           <div className="top-bar-left">
             <ul className="menu">
               <li className="menu-text">C4Nstudio</li>
-              <li className="active"><a href="../" title="Homepage">主页</a></li>
-              <li><a href="/blog" title="Blog">博客</a></li>
-              <li><a href="/about" title="About">关于</a></li>
+              <TopNavItem pageId={this.props.pageId} currentId="0" linkHref="../" pageTitle="Homepage" pageName="主页"/>
+              <TopNavItem pageId={this.props.pageId} currentId="1" linkHref="/blog" pageTitle="Blog" pageName="博客"/>
+              <TopNavItem pageId={this.props.pageId} currentId="2" linkHref="/about" pageTitle="About" pageName="关于"/>
             </ul>
           </div>
           <div className="top-bar-right hide-for-small-only">
             <ul className="menu">
-              <li className="menu-text">Powered by React & Foundation</li>
+              <li className="menu-text"><small>Powered by React & Foundation</small></li>
             </ul>
           </div>
         </div>
       </nav>
     );
+  }
+});
+
+var TopNavItem = React.createClass({
+  render: function() {
+    return (
+      <li className={this.props.pageId == this.props.currentId ? "active" : ""}>
+        <a href={this.props.linkHref} title={this.props.pageTitle}>{this.props.pageName}</a>
+      </li>
+    )
   }
 });
 
