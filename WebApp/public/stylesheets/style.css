@@ -84,9 +84,16 @@ footer{
   opacity: 0.01;
 }
 
+.post-content {
+  padding-top: 10px;
+}
+
 .post-content h3 {
   font-weight: bold;
   color: #2199e8;
+}
+
+.post-content h6 {
 }
 
 .post-placeholder h3{

@@ -5,11 +5,13 @@ var router = express.Router();
 var React = require('react');
 var ReactDOMServer = require('react-dom/server');
 
-/* GET index page. */
-router.get('/', function(req, res, next) {
-  var componentsHtml = "<script>var pageId = 2;</script>";
+var AboutWrapUp = React.createFactory(require('../components/AboutWrapUp'));
 
-  res.render('template', { title: 'C4Nstudio_blog', reactOutput: componentsHtml});
+/* GET about page. */
+router.get('/', function(req, res, next) {
+  var componentsHtml = ReactDOMServer.renderToString(AboutWrapUp({pageId: 2}));
+
+  res.render('template', { title: 'C4Nstudio_About', reactOutput: componentsHtml});
 });
 
 module.exports = router;

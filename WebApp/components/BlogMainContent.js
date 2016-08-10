@@ -5,7 +5,7 @@ var RightContent = React.createFactory(require('./RightContent'));
 var BlogMainContent = React.createClass({
   getInitialState: function() {
     return {
-      currentCategory: "All",
+      currentCategory: "全部文章",
       linkDisabled: true
     };
   },

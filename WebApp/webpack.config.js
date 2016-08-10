@@ -18,17 +18,17 @@ module.exports = {
         }
       }
     ]
-  }
-  // plugins: [
-  //   new webpack.DefinePlugin({
-  //     "process.env": {
-  //        NODE_ENV: JSON.stringify("production")
-  //      }
-  //   }),
-  //   new uglifyJsPlugin({
-  //     compress: {
-  //       warnings: false
-  //     }
-  //   })
-  // ]
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env": {
+         NODE_ENV: JSON.stringify("production")
+       }
+    }),
+    new uglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ]
 };

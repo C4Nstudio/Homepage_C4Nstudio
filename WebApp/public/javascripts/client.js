@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var IndexWrapUp = React.createFactory(require('../../components/IndexWrapUp'));
 var BlogWrapUp = React.createFactory(require('../../components/BlogWrapUp'));
+var AboutWrapUp = React.createFactory(require('../../components/AboutWrapUp'));
 var Posts = require("./posts");
 
 if(window.pageId === 0) {
@@ -14,4 +15,6 @@ if(window.pageId === 0) {
     posts: data.getPosts()
   }
   ReactDOM.render(BlogWrapUp(props), document.getElementById("global-container"));
+} else if(window.pageId === 2) {
+  ReactDOM.render(AboutWrapUp({pageId: 2}), document.getElementById("global-container"));
 }

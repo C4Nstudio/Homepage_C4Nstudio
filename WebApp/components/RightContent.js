@@ -16,7 +16,7 @@ var RightContent = React.createClass({
     var category = this.props.category;
     var postsAmount = 0;
     var renderedPosts = this.props.posts.map(function(post, i){
-      if(category == "All" || post.blogCategory == category) {
+      if(category == "全部文章" || post.blogCategory == category) {
         postsAmount++;
         return <BlogPost key={"blogPost-" + i} blogTitle={post.blogTitle} blogCreatedTime={post.blogCreatedTime} blogCategory={post.blogCategory} blogDescription={post.blogDescription} blogBody={post.blogBody}/>
       }

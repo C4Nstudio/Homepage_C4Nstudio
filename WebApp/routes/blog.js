@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
   }
   var componentsHtml = ReactDOMServer.renderToString(BlogWrapUp(props));
 
-  res.render('template', { title: 'C4Nstudio_blog', reactOutput: componentsHtml});
+  res.render('template', { title: 'C4Nstudio_Blog', reactOutput: componentsHtml});
 });
 
 module.exports = router;
