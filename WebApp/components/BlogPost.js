@@ -28,7 +28,7 @@ var BlogPost = React.createClass({
           </small>
         </h3>
         <h6>
-          分类:&nbsp;&nbsp;{this.props.blogCategory}
+          主题:&nbsp;&nbsp;{this.props.blogCategory}
         </h6>
         <h6>
           摘要:&nbsp;&nbsp;{this.props.blogDescription}

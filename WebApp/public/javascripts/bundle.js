@@ -21888,14 +21888,20 @@
 	    linkDisabled: React.PropTypes.bool.isRequired,
 	    onChanged: React.PropTypes.func.isRequired
 	  },
+	  getInitialState: function () {
+	    return {
+	      currentCategory: "All"
+	    };
+	  },
 	  handleChanged: function (value) {
 	    this.props.onChanged(value);
+	    this.setState({ currentCategory: value });
 	  },
 	  render: function () {
 	    return React.createElement(
 	      "div",
 	      { id: "left-sidebar", className: "medium-2 column" },
-	      React.createElement(SidebarMenu, { categorys: this.props.categorys, onChanged: this.handleChanged, linkDisabled: this.props.linkDisabled })
+	      React.createElement(SidebarMenu, { currentCategory: this.state.currentCategory, categorys: this.props.categorys, onChanged: this.handleChanged, linkDisabled: this.props.linkDisabled })
 	    );
 	  }
 	});
@@ -21914,8 +21920,9 @@
 	  renderMenuItems: function () {
 	    var changeHandler = this.handleChanged;
 	    var disabled = this.props.linkDisabled;
+	    var currentCate = this.props.currentCategory;
 	    return this.props.categorys.map(function (cate, i) {
-	      return React.createElement(MenuItem, { key: "SidebarMenu-" + i, categoryName: cate, onChanged: changeHandler, linkDisabled: disabled });
+	      return React.createElement(MenuItem, { key: "SidebarMenu-" + i, currentCategory: currentCate, categoryName: cate, onChanged: changeHandler, linkDisabled: disabled });
 	    });
 	  },
 	  render: function () {
@@ -21924,8 +21931,8 @@
 	      { className: "menu vertical" },
 	      React.createElement(
 	        "li",
-	        { className: "menu-text" },
-	        "分类"
+	        { className: "menu-text", id: "menu-text" },
+	        "主题："
 	      ),
 	      this.renderMenuItems()
 	    );
@@ -21949,7 +21956,7 @@
 	      null,
 	      React.createElement(
 	        "a",
-	        { className: "menu-item", href: "#", onClick: this.handleClicked, disabled: this.props.linkDisabled },
+	        { className: this.props.categoryName == this.props.currentCategory ? "menu-item menu-active" : "menu-item", href: "#", onClick: this.handleClicked, disabled: this.props.linkDisabled },
 	        this.props.categoryName
 	      )
 	    );
@@ -22047,7 +22054,7 @@
 	      React.createElement(
 	        'h6',
 	        null,
-	        '分类:  ',
+	        '主题:  ',
 	        this.props.blogCategory
 	      ),
 	      React.createElement(

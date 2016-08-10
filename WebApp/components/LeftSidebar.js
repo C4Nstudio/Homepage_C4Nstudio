@@ -6,13 +6,19 @@ var LeftSidebar = React.createClass({
     linkDisabled: React.PropTypes.bool.isRequired,
     onChanged: React.PropTypes.func.isRequired
   },
+  getInitialState: function() {
+    return {
+      currentCategory: "All"
+    };
+  },
   handleChanged: function(value) {
     this.props.onChanged(value);
+    this.setState({currentCategory: value});
   },
   render: function() {
     return (
       <div id="left-sidebar" className="medium-2 column">
-        <SidebarMenu categorys={this.props.categorys} onChanged={this.handleChanged} linkDisabled={this.props.linkDisabled}/>
+        <SidebarMenu currentCategory={this.state.currentCategory} categorys={this.props.categorys} onChanged={this.handleChanged} linkDisabled={this.props.linkDisabled}/>
       </div>
     );
   }
@@ -30,14 +36,15 @@ var SidebarMenu = React.createClass({
   renderMenuItems: function() {
     var changeHandler = this.handleChanged;
     var disabled = this.props.linkDisabled;
+    var currentCate = this.props.currentCategory;
     return this.props.categorys.map(function(cate, i){
-      return <MenuItem key={"SidebarMenu-" + i} categoryName={cate} onChanged={changeHandler} linkDisabled={disabled}/>
+      return <MenuItem key={"SidebarMenu-" + i} currentCategory={currentCate} categoryName={cate} onChanged={changeHandler} linkDisabled={disabled}/>
     });
   },
   render: function() {
     return (
       <ul className="menu vertical">
-        <li className="menu-text">分类</li>
+        <li className="menu-text" id="menu-text">主题：</li>
         {this.renderMenuItems()}
       </ul>
     );
@@ -55,7 +62,7 @@ var MenuItem = React.createClass({
   },
   render: function() {
     return (
-      <li><a className="menu-item" href="#" onClick={this.handleClicked} disabled={this.props.linkDisabled}>{this.props.categoryName}</a></li>
+      <li><a className={this.props.categoryName == this.props.currentCategory ? "menu-item menu-active" : "menu-item"} href="#" onClick={this.handleClicked} disabled={this.props.linkDisabled}>{this.props.categoryName}</a></li>
     );
   }
 });
