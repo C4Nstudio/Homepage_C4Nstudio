@@ -4,14 +4,18 @@ var BlogMainContent = React.createFactory(require('./BlogMainContent'));
 var ToolBar = React.createFactory(require('./ToolBar'));
 var Footer = React.createFactory(require('./Footer'));
 
+var DOM = React.DOM;
+var script = DOM.script;
+
 var BlogWrapUp = React.createClass({
   render: function() {
     return (
       <div>
         <TopNavbar />
-        <BlogMainContent />
+        <BlogMainContent categorys={this.props.categorys} posts={this.props.posts}/>
         <ToolBar />
         <Footer />
+        {script({children: this.props.pageId})}
       </div>
     );
   }

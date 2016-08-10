@@ -7,7 +7,7 @@ var IndexMainContent = React.createClass({
         <div className="row" id="callout">
           <div className="medium-12 column">
             <a href="#">
-              <img src="/images/me.jpg" alt="myPic.jpg"/>
+              <img src="/images/myPic.png" alt="myPic.png"/>
             </a>
           </div>
         </div>
@@ -17,13 +17,13 @@ var IndexMainContent = React.createClass({
               <h3><strong>Get to know me</strong><small>&nbsp;关注我</small></h3>
             </div>
             <div className="float-right">
-              <a href="javascript:window.open('https://about.me/CanWung')" id="me-link">
+              <a href="javascript:window.open('https://about.me/CanWung')" id="me-link" title="https://about.me/CanWung">
                 <img src="/images/me.png" alt="me" />
               </a>
-              <a href="javascript:window.open('https://github.com/C4Nstudio')" id="github-link">
+              <a href="javascript:window.open('https://github.com/C4Nstudio')" id="github-link" title="https://github.com/C4Nstudio">
                 <img src="/images/octocat.png" alt="github" />
               </a>
-              <a href="javascript:window.open('https://www.facebook.com/can.wung')" id="facebook-link">
+              <a href="javascript:window.open('https://www.facebook.com/can.wung')" id="facebook-link" title="https://www.facebook.com/can.wung">
                 <img src="/images/facebook.png" alt="facebook" />
               </a>
             </div>

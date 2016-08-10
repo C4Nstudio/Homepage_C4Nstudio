@@ -3,9 +3,12 @@ var React = require('react');
 var Footer = React.createClass({
   render: function() {
     return (
-      <footer className="row column" id="footer" className='text-center'>
-        <div className="medium-12 column">
-          <small>Copyright&nbsp;&copy;&nbsp;<a href='#'>C4Nstudio.com</a> . All Rights Reserved. Powered By React & Foundation</small>
+      <footer id="footer" className='text-center'>
+        <div>
+          <small>Copyright&nbsp;&copy;&nbsp;<a href='http://C4Nstudio.com'>C4Nstudio.com</a> . All Rights Reserved.</small>
+        </div>
+        <div>
+          <small>Powered By React & Foundation</small>
         </div>
       </footer>
     );
