@@ -21956,7 +21956,7 @@
 	      null,
 	      React.createElement(
 	        "a",
-	        { className: this.props.categoryName == this.props.currentCategory ? "menu-item menu-active" : "menu-item", href: "#", onClick: this.handleClicked, disabled: this.props.linkDisabled },
+	        { className: this.props.categoryName == this.props.currentCategory ? "menu-item menu-active" : "menu-item", href: "javascript:void(0)", onClick: this.handleClicked, disabled: this.props.linkDisabled },
 	        this.props.categoryName
 	      )
 	    );
@@ -22032,6 +22032,18 @@
 	      blogCategory: "Other"
 	    };
 	  },
+	  getInitialState: function () {
+	    return {
+	      blogFolded: true
+	    };
+	  },
+	  handleClicked: function () {
+	    this.toggleFolded();
+	  },
+	  toggleFolded: function () {
+	    var folded = this.state.blogFolded ? false : true;
+	    this.setState({ blogFolded: folded });
+	  },
 	  rawMarkup: function () {
 	    var rawMarkup = marked(this.props.blogBody, { sanitize: true });
 	    return { __html: rawMarkup };
@@ -22039,34 +22051,42 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      { className: 'post-content' },
+	      { className: 'post-frame' },
 	      React.createElement(
-	        'h3',
-	        null,
-	        this.props.blogTitle,
+	        'div',
+	        { className: this.state.blogFolded ? "post-content post-folded" : "post-content" },
 	        React.createElement(
-	          'small',
+	          'h3',
 	          null,
-	          '    更新于:  ',
-	          this.props.blogCreatedTime
-	        )
+	          this.props.blogTitle,
+	          React.createElement(
+	            'small',
+	            null,
+	            '    更新于:  ',
+	            this.props.blogCreatedTime
+	          )
+	        ),
+	        React.createElement(
+	          'h6',
+	          null,
+	          '主题:  ',
+	          this.props.blogCategory
+	        ),
+	        React.createElement(
+	          'h6',
+	          null,
+	          '摘要:  ',
+	          this.props.blogDescription,
+	          React.createElement('br', null),
+	          React.createElement('br', null)
+	        ),
+	        React.createElement('div', { dangerouslySetInnerHTML: this.rawMarkup() })
 	      ),
 	      React.createElement(
-	        'h6',
-	        null,
-	        '主题:  ',
-	        this.props.blogCategory
-	      ),
-	      React.createElement(
-	        'h6',
-	        null,
-	        '摘要:  ',
-	        this.props.blogDescription,
-	        React.createElement('br', null),
-	        React.createElement('br', null)
-	      ),
-	      React.createElement('div', { dangerouslySetInnerHTML: this.rawMarkup() }),
-	      React.createElement('hr', null)
+	        'a',
+	        { className: 'float-right', href: 'javascript:void(0)', onClick: this.handleClicked },
+	        this.state.blogFolded ? "↓阅读全文" : "↑收起"
+	      )
 	    );
 	  }
 	});

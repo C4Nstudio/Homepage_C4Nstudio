@@ -62,7 +62,7 @@ var MenuItem = React.createClass({
   },
   render: function() {
     return (
-      <li><a className={this.props.categoryName == this.props.currentCategory ? "menu-item menu-active" : "menu-item"} href="#" onClick={this.handleClicked} disabled={this.props.linkDisabled}>{this.props.categoryName}</a></li>
+      <li><a className={this.props.categoryName == this.props.currentCategory ? "menu-item menu-active" : "menu-item"} href="javascript:void(0)" onClick={this.handleClicked} disabled={this.props.linkDisabled}>{this.props.categoryName}</a></li>
     );
   }
 });

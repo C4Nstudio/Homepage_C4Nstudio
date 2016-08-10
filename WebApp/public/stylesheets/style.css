@@ -93,11 +93,15 @@ footer{
   color: #2199e8;
 }
 
-.post-content {
-  max-height: 350px;
+.post-frame {
   margin-bottom: 30px;
+  padding-bottom: 30px;
   border-bottom: 1px solid #c4c4c4;
-  overflow-y: hidden;;
+}
+
+.post-folded {
+  max-height: 350px;
+  overflow-y: hidden;
 }
 
 #footer {
