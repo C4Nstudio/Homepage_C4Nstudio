@@ -60,7 +60,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(80,function(){
-    console.log("Server Start!");
+  console.log("Server Start!");
 });
 
 module.exports = app;
