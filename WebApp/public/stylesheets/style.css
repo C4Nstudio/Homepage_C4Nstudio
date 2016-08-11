@@ -190,8 +190,13 @@ footer{
 .introduction-tag {
   margin: 0;
   border: 1px solid #e3e3e3;
-  box-shadow: 5px 5px 5px #e3e3e3;
+  box-shadow: 5px 5px 5px #999999;
   background-color: #fff;
+  transition: box-shadow .3s;
+}
+
+.introduction-tag:hover {
+  box-shadow: 15px 15px 10px #999999;
 }
 
 @media (max-width: 40em) {
