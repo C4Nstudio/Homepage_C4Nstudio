@@ -111,6 +111,12 @@ footer{
   overflow-y: hidden;
 }
 
+#fold-link {
+  margin-top: 8px;
+}
+
+/*==================================================================*/
+
 #footer {
   margin-top: 30px;
   padding: 20px 0;
@@ -134,13 +140,14 @@ footer{
 
 #intro {
   margin-top: 10px;
+  padding: 0;
 }
 
 @media (min-width: 40em) {
   #intro {
     margin-top: 30px;
     background-image: url("../images/c4nstudioBg.png");
-    background-size: auto;
+    background-size: cover;
     background-repeat: no-repeat;
   }
 }
@@ -181,7 +188,7 @@ footer{
 }
 
 .introduction-tag {
-  margin: 0 5px;
+  margin: 0;
   border: 1px solid #e3e3e3;
   box-shadow: 5px 5px 5px #e3e3e3;
   background-color: #fff;

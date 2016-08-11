@@ -8,7 +8,7 @@ var LeftSidebar = React.createClass({
   },
   getInitialState: function() {
     return {
-      currentCategory: "All"
+      currentCategory: "全部文章"
     };
   },
   handleChanged: function(value) {

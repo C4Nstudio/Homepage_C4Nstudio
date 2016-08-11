@@ -7,7 +7,7 @@ var IndexMainContent = React.createClass({
         <div className="row" id="callout">
           <div className="medium-12 column">
             <a href="#">
-              <img src="/images/myPic.png" alt="myPic.png"/>
+              <img src="/images/myPic.jpg" alt="myPic.jpg"/>
             </a>
           </div>
         </div>

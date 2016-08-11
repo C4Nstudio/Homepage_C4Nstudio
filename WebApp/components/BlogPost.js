@@ -49,7 +49,7 @@ var BlogPost = React.createClass({
           </h6>
           <div dangerouslySetInnerHTML={this.rawMarkup()} />
         </div>
-        <a className="float-right" href="javascript:void(0)" onClick={this.handleClicked}>{this.state.blogFolded ? "↓阅读全文" : "↑收起"}</a>
+        <a className="float-right" id="fold-link" href="javascript:void(0)" onClick={this.handleClicked}>{this.state.blogFolded ? "↓阅读全文" : "↑收起"}</a>
       </div>
     );
   }
