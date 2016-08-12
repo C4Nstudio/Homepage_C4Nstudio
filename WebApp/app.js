@@ -1,4 +1,5 @@
 var express = require('express');
+var compression = require('compression');
 var sassMiddleware = require('node-sass-middleware');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -30,6 +31,7 @@ app.use(sassMiddleware({
   outputStyle: 'compressed'
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(compression());
 
 app.use('/', indexRoute);
 app.use('/blog',blogRoute);
