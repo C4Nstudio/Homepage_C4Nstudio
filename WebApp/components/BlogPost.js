@@ -1,5 +1,5 @@
 var React = require('react');
-var marked = require('../public/javascripts/marked.min.js');
+var marked = require('marked');
 
 var BlogPost = React.createClass({
   propTypes: {
