@@ -70,12 +70,23 @@ footer {
   margin-bottom: 15px;
 }
 
+.menu-item {
+  padding-left: 2px;
+}
+
 .menu-item:hover {
+  padding-left: 15px;
   border-left: 1px dashed $deepBlue;
-  font-weight: bold;
 }
 
 .menu-active {
+  padding-left: 0;
+  border-left: 2px solid $deepBlue;
+  font-weight: bold;
+}
+
+.menu-active:hover {
+  padding-left: 16px;
   border-left: 2px solid $deepBlue;
   font-weight: bold;
 }
@@ -124,6 +135,21 @@ footer {
 .post-folded {
   max-height: 350px;
   overflow-y: hidden;
+}
+
+.blog-content h4, h5 {
+  color: $deepBlue;
+}
+
+.blog-content pre {
+  color: #fff;
+  background-color: #000;
+}
+
+.blog-content pre code {
+  padding-left: 15px;
+  color: #fff;
+  background-color: #000;
 }
 
 #fold-link {

@@ -47,7 +47,7 @@ var BlogPost = React.createClass({
             摘要:&nbsp;&nbsp;{this.props.blogDescription}
             <br /><br />
           </h6>
-          <div dangerouslySetInnerHTML={this.rawMarkup()} />
+          <div className="blog-content" dangerouslySetInnerHTML={this.rawMarkup()} />
         </div>
         <a className="float-right" id="fold-link" href="javascript:void(0)" onClick={this.handleClicked}>{this.state.blogFolded ? "↓阅读全文" : "↑收起"}</a>
       </div>
