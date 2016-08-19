@@ -1,5 +1,5 @@
 //Sass variables
-$fontStack: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+$fontStack: "Comfortaa","Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 $darkBlack: #303030;
 $deepBlue: #2199e8;
 $lightGrey: #f0f0f0;
@@ -14,6 +14,7 @@ $darkGrey: #999999;
 
 body {
   font-family: $fontStack;
+  letter-spacing: 2px;
 }
 
 .top-bar,
