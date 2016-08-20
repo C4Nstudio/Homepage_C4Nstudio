@@ -1,6 +1,9 @@
 var React = require('react');
 
 var Footer = React.createClass({
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return false;
+  },
   render: function() {
     return (
       <footer className='text-center'>
