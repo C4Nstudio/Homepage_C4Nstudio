@@ -6,6 +6,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var indexRoute = require('./routes/index');
 var blogRoute = require('./routes/blog');
@@ -31,6 +32,16 @@ app.use(sassMiddleware({
   outputStyle: 'compressed'
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+global.dbHandle = require('./public/javascripts/dbHandle');
+global.db = mongoose.connect('mongodb://127.0.0.1:27017/test');
+db.connection.on("error", function(error) {
+  console.log("Database connection failure: " + error);
+});
+db.connection.on("open", function(error) {
+  console.log("Database connected!");
+});
+
 app.use(compression());
 
 app.use('/', indexRoute);
