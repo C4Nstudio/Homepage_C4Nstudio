@@ -1,6 +1,9 @@
 var React = require('react');
 
 var IndexMainContent = React.createClass({
+  shouldComponentUpdate: function() {
+    return false;
+  },
   render: function() {
     return (
       <div id="index-main-content">
